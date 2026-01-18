@@ -1,15 +1,15 @@
 import { useLocation } from "react-router-dom";
-import StringDetail from "./string-methods/StringDetail";
 import ArrayDetail from "./array-methods/ArrayDetail";
-import NumberDetail from "./number-methods/NumberDetail";
 import DateDetail from "./date-methods/DateDetail";
 import MathDetail from "./math-methods/MathDetail";
+import NumberDetail from "./number-methods/NumberDetail";
+import StringDetail from "./string-methods/StringDetail";
 
 const MainPage = () => {
   const location = useLocation();
   const pathname = location.pathname.split("/")[1];
   return (
-    <div className="p-8">
+    <div className="w-full">
       {pathname === "string" ? (
         <StringDetail />
       ) : pathname === "array" ? (

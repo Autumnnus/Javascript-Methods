@@ -2,26 +2,82 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-color: #12181b;
-  color: #f1f1f1;
-}
-* {
-  font-family: "Montserrat", sans-serif;
+:root {
+  --js-yellow: #f7df1e;
+  --bg-dark: #0a0a0b;
+  --bg-card: #141416;
+  --border-color: #262626;
+  --text-main: #e2e2e3;
+  --text-muted: #949495;
+  --accent-cyan: #00e0ff;
 }
 
-/* For WebKit browsers (Chrome, Safari) */
-.scrollbar-style::-webkit-scrollbar {
-  width: 10px;
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-.scrollbar-style::-webkit-scrollbar-thumb {
-  background: #b4a975;
-  border-radius: 3px;
+
+code,
+.font-mono {
+  font-family: "JetBrains Mono", monospace;
 }
-/* For Firefox */
-.scrollbar-style {
-  scrollbar-color: #b4a975 #f1f1f1;
+
+/* Subtle Grid Background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: -1;
 }
-.scrollbar-style::-webkit-scrollbar-track {
-  background: #f1f1f1;
+
+/* Transitions */
+* {
+  @apply transition-colors duration-200;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--js-yellow);
+}
+
+.js-card {
+  @apply bg-[#141416] border border-[#262626] rounded-xl overflow-hidden shadow-2xl;
+}
+
+.js-button-primary {
+  @apply bg-[#f7df1e] text-black font-bold px-6 py-2.5 rounded-lg hover:bg-yellow-100 active:scale-95 duration-200 flex items-center gap-2;
+}
+
+.js-button-outline {
+  @apply border border-[#262626] text-white px-6 py-2.5 rounded-lg hover:border-[#f7df1e] hover:text-[#f7df1e] active:scale-95 duration-200 flex items-center gap-2;
+}
+
+.js-input {
+  @apply bg-[#1a1a1c] border border-[#262626] rounded-lg px-4 py-2 focus:border-[#f7df1e] focus:outline-none focus:ring-1 focus:ring-[#f7df1e] text-white placeholder-gray-500;
 }
